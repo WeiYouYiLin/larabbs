@@ -37,8 +37,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]); 等价于
+//Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]); 
+// 等价于
 
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
-Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
+Route::put('/users/{user}', 'UsersController@update')->name('users.update');
