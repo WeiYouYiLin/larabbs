@@ -43,5 +43,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
 Route::put('/users/{user}', 'UsersController@update')->name('users.update');
-
+// 话题
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+// 分类列表话题
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
