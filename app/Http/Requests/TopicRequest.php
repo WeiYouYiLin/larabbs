@@ -13,6 +13,9 @@ class TopicRequest extends Request
             {
                 return [
                     // CREATE ROLES
+                    'title'       => 'required|min:2',
+                    'body'        => 'required|min:3',
+                    'category_id' => 'required|numeric',
                 ];
             }
             // UPDATE
