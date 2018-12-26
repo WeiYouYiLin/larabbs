@@ -26,6 +26,10 @@ class TopicsController extends Controller
     // 显示单个话题
     public function show(Topic $topic)
     {
+    	// URL 矫正
+        if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
+            return redirect($topic->link(), 301);
+        }
         return view('topics.show', compact('topic'));
     }
     // 创建单个话题页面
