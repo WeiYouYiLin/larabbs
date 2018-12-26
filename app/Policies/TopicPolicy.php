@@ -12,8 +12,9 @@ class TopicPolicy extends Policy
     {
         return $topic->user_id == $user->id;
     }
+    // 只有当话题关联作者的 ID 等于当前登录用户 ID 时候才放行
     public function destroy(User $user, Topic $topic)
     {
-        return true;
+        return $topic->user_id == $user->id;
     }
 }

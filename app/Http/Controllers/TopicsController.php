@@ -48,7 +48,7 @@ class TopicsController extends Controller
 	{
         $this->authorize('update', $topic);
         $categories = Category::all();
-        
+
 		return view('topics.create_and_edit', compact('topic','categories'));
 	}
 	// 编辑单个话题操作
@@ -61,12 +61,12 @@ class TopicsController extends Controller
 	}
 	// 删除单个话题
 	public function destroy(Topic $topic)
-	{
-		$this->authorize('destroy', $topic);
-		$topic->delete();
+    {
+        $this->authorize('destroy', $topic);
+        $topic->delete();
 
-		return redirect()->route('topics.index')->with('success', 'Deleted successfully.');
-	}
+        return redirect()->route('topics.index')->with('success', 'Deleted successfully.');
+    }
 	// 话题上传图片
 	public function uploadImage(Request $request, ImageUploadHandler $uploader)
     {
