@@ -51,3 +51,5 @@ Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 // 话题上传图片
 Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
+// 话题回复
+Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
