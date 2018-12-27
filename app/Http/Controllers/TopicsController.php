@@ -24,7 +24,7 @@ class TopicsController extends Controller
         return view('topics.index', compact('topics'));
     }
     // 显示单个话题
-    public function show(Topic $topic)
+    public function show(Request $request,Topic $topic)
     {
     	// URL 矫正
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
