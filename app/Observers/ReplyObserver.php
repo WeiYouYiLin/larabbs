@@ -9,12 +9,13 @@ use App\Notifications\TopicReplied;
 // saved,  deleting, deleted, restoring, restored
 
 class ReplyObserver
-{
+{   
+    // 新增回复时，过滤掉回复的内容
     public function creating(Reply $reply)
     {
         $reply->content = clean($reply->content, 'user_topic_body');
     }
-
+    // 新增回复后，回复数量加 1
     public function created(Reply $reply)
     {
         $topic = $reply->topic;
@@ -22,5 +23,10 @@ class ReplyObserver
 
         // 通知作者话题被回复了
         $topic->user->notify(new TopicReplied($reply));
+    }
+    // 删除回复后，回复数量减 1 
+    public function deleted(Reply $reply)
+    {
+        $reply->topic->decrement('reply_count', 1);
     }
 }

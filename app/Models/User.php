@@ -54,4 +54,9 @@ class User extends Authenticatable
         $this->save();
         $this->unreadNotifications->markAsRead();
     }
+    // 用户表的 id 应当等于传入的模型的表的 user_id
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
 }
