@@ -23,7 +23,7 @@ return [
         },
         // 不允许删除
         'delete' => function ($model) {
-            return false;
+            return true;
         },
         // 允许查看
         'view' => function ($model) {
