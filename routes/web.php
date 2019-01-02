@@ -55,3 +55,5 @@ Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
 // 消息通知
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+// 无权限访问后台的提醒页面
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
