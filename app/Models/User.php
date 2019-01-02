@@ -9,11 +9,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles;
-    
+    use Traits\ActiveUserHelper; // 获取活动用户
+    use HasRoles;        
     use Notifiable {
         notify as protected laravelNotify;
-    }
+    }    
+
     public function notify($instance)
     {
         // 如果要通知的人是当前用户，就不必通知了！
