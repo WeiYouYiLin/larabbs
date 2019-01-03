@@ -15,7 +15,8 @@
     return view('welcome');
 });*/
 // 首页
-Route::get('/', 'PagesController@root')->name('root');
+//Route::get('/', 'PagesController@root')->name('root');
+Route::get('/', 'TopicsController@index')->name('root');
 
 //Auth::routes(); 等价于下面
 
