@@ -34,6 +34,7 @@ class VerificationCodesController extends Controller
 
         return $this->response->array([
             'key' => $key,
+            'code'=> $code,
             'expired_at' => $expiredAt->toDateTimeString(),
         ])->setStatusCode(201);
         //return $this->response->array(['test_message' => 'store verification code']);
