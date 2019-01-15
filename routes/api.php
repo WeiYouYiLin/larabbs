@@ -66,6 +66,12 @@ $api->version('v1', [
 	 
     	// 话题分类首页
     	$api->get('categories', 'CategoriesController@index')->name('api.categories.index');
+        // 话题列表
+        $api->get('topics', 'TopicsController@index')
+            ->name('api.topics.index');
+        // 某个用户发布的话题列表
+        $api->get('users/{user}/topics', 'TopicsController@userIndex')
+            ->name('api.users.topics.index');
     	
 	    // 需要 token 验证的接口
 	    
