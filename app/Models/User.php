@@ -7,9 +7,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable implements JWTSubject
 {
+    use HasApiTokens;   // 提供一些辅助函数，用于检查已认证用户的令牌和使用范围
     use Traits\LastActivedAtHelper; // 获取用户最后活跃时间
     use Traits\ActiveUserHelper; // 获取活动用户
     use HasRoles;        
@@ -99,5 +101,14 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+    // 支持手机登录
+    public function findForPassport($username)
+    {
+        filter_var($username, FILTER_VALIDATE_EMAIL) ?
+          $credentials['email'] = $username :
+          $credentials['phone'] = $username;
+
+        return self::where($credentials)->first();
     }
 }
