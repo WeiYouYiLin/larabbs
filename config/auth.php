@@ -42,7 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'passport',
+            //'driver' => 'passport', laravel 的配置
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
