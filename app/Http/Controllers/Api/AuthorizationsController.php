@@ -176,14 +176,14 @@ class AuthorizationsController extends Controller
         }
     }
     // 删除token
-   /* public function destroy()
+    public function destroy()
     {
         \Auth::guard('api')->logout();
         return $this->response->noContent();
-    }*/
-    public function destroy()
+    }
+   /* public function destroy()
     {
         $this->user()->token()->revoke();
         return $this->response->noContent();
-    }
+    }*/
 }
