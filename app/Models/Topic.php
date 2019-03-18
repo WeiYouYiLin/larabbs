@@ -54,4 +54,9 @@ class Topic extends Model
     {
         return $this->hasMany(Reply::class);
     }
+    // 话题的前 5 条回复数据
+    public function topReplies()
+    {
+        return $this->replies()->limit(5);
+    }
 }

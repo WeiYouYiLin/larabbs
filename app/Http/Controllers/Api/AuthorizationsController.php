@@ -74,7 +74,7 @@ class AuthorizationsController extends Controller
         return $this->response->array($result)->setStatusCode(201);
     }
     // 用户登录
-    /*public function store(AuthorizationRequest $request)
+    public function store(AuthorizationRequest $request)
     {
         $username = $request->username;
 
@@ -89,16 +89,16 @@ class AuthorizationsController extends Controller
         }
 
         return $this->respondWithToken($token)->setStatusCode(201);
-    }*/
+    }
 
-    public function store(AuthorizationRequest $originRequest, AuthorizationServer $server, ServerRequestInterface $serverRequest)
+   /* public function store(AuthorizationRequest $originRequest, AuthorizationServer $server, ServerRequestInterface $serverRequest)
     {
         try {
            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response)->withStatus(201);
         } catch(OAuthServerException $e) {
             return $this->response->errorUnauthorized($e->getMessage());
         }
-    }
+    }*/
     // 小程序登录
     public function weappStore(WeappAuthorizationRequest $request)
     {
@@ -162,19 +162,19 @@ class AuthorizationsController extends Controller
         ]);
     }
     // 刷新token
-    /*public function update()
+    public function update()
     {
         $token = \Auth::guard('api')->refresh();
         return $this->respondWithToken($token);
-    }*/
-    public function update(AuthorizationServer $server, ServerRequestInterface $serverRequest)
+    }
+   /* public function update(AuthorizationServer $server, ServerRequestInterface $serverRequest)
     {
         try {
            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response);
         } catch(OAuthServerException $e) {
             return $this->response->errorUnauthorized($e->getMessage());
         }
-    }
+    }*/
     // 删除token
     public function destroy()
     {

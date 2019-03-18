@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Transformers\TopicTransformer;
 use App\Http\Requests\Api\TopicRequest;
-
+use App\Policies\TopicPolicy;
 
 class TopicsController extends Controller
 {	
@@ -46,7 +46,7 @@ class TopicsController extends Controller
 	// 话题详情
 	public function show(Topic $topic)
 	{
-	    return $this->response->item($topic, new TopicTransformer());
+        return $this->response->item($topic, new TopicTransformer());
 	}
 	// 发布话题
     public function store(TopicRequest $request, Topic $topic)
@@ -69,7 +69,8 @@ class TopicsController extends Controller
 	// 删除话题
 	public function destroy(Topic $topic)
 	{
-	    $this->authorize('destroy', $topic);
+	    //return $this->user();
+        $this->authorize('destroy', $topic);
 
 	    $topic->delete();
 	    return $this->response->noContent();
