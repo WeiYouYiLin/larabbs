@@ -20,20 +20,6 @@ class AppServiceProvider extends ServiceProvider
         //
 
         \Carbon\Carbon::setLocale('zh');
-        Horizon::auth(function ($request) {
-            // 这里进行判断，根据需求自行选择
-
-            // 通过认证可以访问
-            if (Auth::check()) {
-                return true;
-            }
-
-            // 指定参数可以访问
-            if ($request->input('q') == 'horizon') {
-                return true;
-            }
-
-        });
     }
 
     /**
